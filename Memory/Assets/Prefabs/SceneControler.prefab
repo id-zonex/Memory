@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5323986532261175929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5323986532261175931}
+  - component: {fileID: 5323986532261175928}
+  m_Layer: 0
+  m_Name: SceneControler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5323986532261175931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323986532261175929}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5323986532261175928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5323986532261175929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da67595d3c4027409c2c4776ebed461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardPrefabs:
+  - {fileID: 9048908888952634376, guid: 4626ca0c33539c946bde96b2cdf6665c, type: 3}
+  - {fileID: 9048908888952634376, guid: 4626ca0c33539c946bde96b2cdf6665c, type: 3}
+  - {fileID: 6311620861758161981, guid: f30dc602521171a4a9279c785ba7c356, type: 3}
+  - {fileID: 6311620861758161981, guid: f30dc602521171a4a9279c785ba7c356, type: 3}
+  - {fileID: 6443177859198459215, guid: 35bf1eedaad9ef6468ebf192d6373ee9, type: 3}
+  - {fileID: 6443177859198459215, guid: 35bf1eedaad9ef6468ebf192d6373ee9, type: 3}
+  - {fileID: 4600575052343089528, guid: 8883467b07ec055469d6565c9e827801, type: 3}
+  - {fileID: 4600575052343089528, guid: 8883467b07ec055469d6565c9e827801, type: 3}
+  CardPositions:
+  - {x: -5.93, y: 2.38, z: 0}
+  - {x: -2.18, y: 2.38, z: 0}
+  - {x: 2.07, y: 2.38, z: 0}
+  - {x: 5.82, y: 2.38, z: 0}
+  - {x: -5.93, y: -2.38, z: 0}
+  - {x: -2.18, y: -2.38, z: 0}
+  - {x: 2.07, y: -2.38, z: 0}
+  - {x: 5.82, y: -2.38, z: 0}
