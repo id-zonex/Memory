@@ -395,13 +395,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5323986532261175928, guid: ba7a9e00ab7695f43a7d450c339c02ff,
         type: 3}
+      propertyPath: cardWidth
+      value: 2.826
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323986532261175928, guid: ba7a9e00ab7695f43a7d450c339c02ff,
+        type: 3}
+      propertyPath: cardHeight
+      value: 3.366
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323986532261175928, guid: ba7a9e00ab7695f43a7d450c339c02ff,
+        type: 3}
+      propertyPath: cardsCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323986532261175928, guid: ba7a9e00ab7695f43a7d450c339c02ff,
+        type: 3}
       propertyPath: xCardCount
-      value: 3
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5323986532261175928, guid: ba7a9e00ab7695f43a7d450c339c02ff,
         type: 3}
       propertyPath: yCardCount
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5323986532261175928, guid: ba7a9e00ab7695f43a7d450c339c02ff,
         type: 3}
