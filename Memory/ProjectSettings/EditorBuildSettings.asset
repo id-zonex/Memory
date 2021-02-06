@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/loadMenu.unity
     guid: 0ad16e0720a84c44a841f7df1585faed
   - enabled: 1
-    path: Assets/memory.unity
+    path: Assets/Scenes/memory.unity
     guid: 5be7076a100821e448c2a51d2678c1f7
   m_configObjects: {}

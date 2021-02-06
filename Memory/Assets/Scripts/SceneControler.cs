@@ -6,18 +6,18 @@ public class SceneControler : MonoBehaviour
 {
     [HideInInspector] public bool inProcces = false;
 
-    public GameObject[] CardPrefabs;
+    [SerializeField] private GameObject[] CardPrefabs;
     private List<GameObject> Cards;
 
-    public int xCardCount;
-    public int yCardCount;
+    private int xCardCount => PlayerPrefs.GetInt("xCardCount");
+    private int yCardCount => PlayerPrefs.GetInt("yCardCount");
 
-    public int cardsCount { get { return xCardCount * yCardCount; } }
+    private int cardsCount { get { return xCardCount * yCardCount; } }
 
     public bool canReveal { get { return _secondRevealed == null; } }
 
-    public int xOffSet;
-    public int yOffSet;
+    [SerializeField] private int xOffSet;
+    [SerializeField] private int yOffSet;
 
     private Card _firstRevealed;
     private Card _secondRevealed;
@@ -59,8 +59,8 @@ public class SceneControler : MonoBehaviour
             }
 
         }
-        camera.transform.position = new Vector3(Mathf.Floor(width / 2), Mathf.Floor(heigth / 2) + 2.79f);
-        
+        camera.transform.position = new Vector3(Mathf.Floor(width / 2) + 2, Mathf.Floor(heigth / 2) + 2f);
+
         camera.orthographicSize = Mathf.Floor((width + heigth) / 2) * 0.4f;
 
     }
@@ -78,6 +78,22 @@ public class SceneControler : MonoBehaviour
             cards.Add(cardPrefabs[randIndex]);
         }
 
+        cards = CardPlacer(cards);
+
+        return cards;
+    }
+
+    private List<GameObject> CardPlacer(List<GameObject> cards)
+    {
+        System.Random rando = new System.Random();
+        for (int i = cards.Count - 1; i >= 1; i--)
+        {
+            int j = rando.Next(i + 1);
+            var temp = cards[j];
+            cards[j] = cards[i];
+            cards[i] = temp;
+        }
+        
         return cards;
     }
 
