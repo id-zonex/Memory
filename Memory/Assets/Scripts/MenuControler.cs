@@ -18,14 +18,13 @@ public class MenuControler : MonoBehaviour
         PlayerPrefs.DeleteKey("yCardCount");
     }
 
-    public void LoadGameAndTryGetCardCount()
+    public void LoadGame()
     {
-        TryGetCardCount();
         SceneManager.LoadSceneAsync(1);
         
     }
 
-    private void TryGetCardCount()
+    public void TryGetCardCount()
     {
         int x = _datafullXValue;
         int y = _datafullYValue; 
