@@ -14,8 +14,8 @@ public class MenuControler : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.DeleteKey("xCardCount");
-        PlayerPrefs.DeleteKey("yCardCount");
+        PlayerPrefs.SetInt("xCardCount", _datafullXValue);
+        PlayerPrefs.SetInt("yCardCount", _datafullYValue);
     }
 
     public void LoadGame()

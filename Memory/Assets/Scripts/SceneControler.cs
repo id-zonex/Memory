@@ -6,8 +6,10 @@ public class SceneControler : MonoBehaviour
 {
     [HideInInspector] public bool inProcces = false;
 
-    [SerializeField] private GameObject[] CardPrefabs;
-    private List<GameObject> Cards;
+    [SerializeField] private List<GameObject> CardPrefabs = new List<GameObject>();
+    [SerializeField] private CardInfo _cardInfo;
+
+    private List<GameObject> _spawnedCards;
 
     private int xCardCount => PlayerPrefs.GetInt("xCardCount");
     private int yCardCount => PlayerPrefs.GetInt("yCardCount");
@@ -28,8 +30,11 @@ public class SceneControler : MonoBehaviour
 
     void Start()
     {
+        CardPrefabs = _cardInfo.GetCurrentCardPack().Cards;
+        print(CardPrefabs.Count);
+
         camera = Camera.main;
-        Cards = RandomlyFillList(CardPrefabs);
+        _spawnedCards = RandomlyFillList(CardPrefabs);
        
 
         float yOff = 0;
@@ -49,7 +54,7 @@ public class SceneControler : MonoBehaviour
 
                 try
                 {
-                    var card = Instantiate(Cards[index], new Vector3(Xoff, yOff, 10), Quaternion.identity);
+                    var card = Instantiate(_spawnedCards[index], new Vector3(Xoff, yOff, 10), Quaternion.identity);
                 }
                 catch (System.Exception)
                 {
@@ -59,23 +64,26 @@ public class SceneControler : MonoBehaviour
             }
 
         }
+
         camera.transform.position = new Vector3(Mathf.Floor(width / 2) + 2, Mathf.Floor(heigth / 2) + 2f);
 
         camera.orthographicSize = Mathf.Floor((width + heigth) / 2) * 0.4f;
 
     }
 
-    private List<GameObject> RandomlyFillList(GameObject[] cardPrefabs)
+    private List<GameObject> RandomlyFillList(List<GameObject> cardPrefabs)
     {
         var cards = new List<GameObject>();
+        print(cards);
+        print(cardPrefabs);
 
         while(true)
         {
             if (cards.Count + 2 > cardsCount) break;
-            var randIndex = Random.Range(0, cardPrefabs.Length);
+            var randElement = cardPrefabs[Random.Range(0, cardPrefabs.Count)];
 
-            cards.Add(cardPrefabs[randIndex]);
-            cards.Add(cardPrefabs[randIndex]);
+            cards.Add(randElement.gameObject);
+            cards.Add(randElement.gameObject);
         }
 
         cards = CardPlacer(cards);

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIButtonRestart : MonoBehaviour
 {
-    public void OnMouseUp()
+    public void GoToHome()
     {
         SceneManager.LoadScene(0);
         
