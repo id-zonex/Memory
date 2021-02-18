@@ -7,26 +7,26 @@ public class CardInfo : ScriptableObject
 {
     public CardPack DatafullCardPack;
 
-    public CardPack CurrentCardPack;
     public List<CardPack> OpenCads;
+    public List<CardPack> AllCards = new List<CardPack>();
 
-    public int CurrentCardIndex;
-    public string CurrentCardPackName;
 
-    public CardPack GetCurrentCardPack()
+    public CardPack GetCurrentCardPack(int index)
     {
-        return OpenCads[CurrentCardIndex];
-    }
+        foreach (var i in OpenCads)
+        {
+            if (i.index == PlayerPrefs.GetInt("CurrentCardIndex"))
+            {
+                return i;
+            }
+        }
 
-    public CardPack GetCardPackByName()
-    {
-        return GameObject.Find(CurrentCardPackName).GetComponent<CardPack>();
+        return null;
     }
-
 
     public void Reset()
     {
-        CurrentCardPack = DatafullCardPack;
+        PlayerPrefs.DeleteKey("CurrentCardIndex");
 
         OpenCads.Clear();
         OpenCads.Add(DatafullCardPack);

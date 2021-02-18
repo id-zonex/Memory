@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DatafullCardPack: {fileID: 8209486429698235468, guid: 63c54990982d58647b47d56c1666b201,
     type: 3}
-  CurrentCardPack: {fileID: 8209486429698235468, guid: 63c54990982d58647b47d56c1666b201,
-    type: 3}
   OpenCads:
   - {fileID: 8209486429698235468, guid: 63c54990982d58647b47d56c1666b201, type: 3}
   - {fileID: 3903914331563753589, guid: 756f9260c054c1f47b9232345abeecfe, type: 3}
-  CurrentCardIndex: 0
-  CurrentCardPackName: Card1
+  AllCards:
+  - {fileID: 8209486429698235468, guid: 63c54990982d58647b47d56c1666b201, type: 3}
+  - {fileID: 3903914331563753589, guid: 756f9260c054c1f47b9232345abeecfe, type: 3}

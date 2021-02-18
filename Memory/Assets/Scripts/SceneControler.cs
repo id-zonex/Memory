@@ -16,7 +16,7 @@ public class SceneControler : MonoBehaviour
 
     private int cardsCount { get { return xCardCount * yCardCount; } }
 
-    public bool canReveal { get { return _secondRevealed == null; } }
+    public bool CanReveal { get { return _secondRevealed == null; } }
 
     [SerializeField] private int xOffSet;
     [SerializeField] private int yOffSet;
@@ -30,8 +30,7 @@ public class SceneControler : MonoBehaviour
 
     void Start()
     {
-        CardPrefabs = _cardInfo.GetCurrentCardPack().Cards;
-        print(CardPrefabs.Count);
+        CardPrefabs = _cardInfo.GetCurrentCardPack(PlayerPrefs.GetInt("CurrentCardIndex")).Cards;
 
         camera = Camera.main;
         _spawnedCards = RandomlyFillList(CardPrefabs);

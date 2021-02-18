@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class CardPack : MonoBehaviour
 {
     public bool IsSelected;
+    public bool IsBuy;
     public List<GameObject> Cards;
 
-    [SerializeField] private int index;
+    public int index;
 
     [SerializeField] private int _price;
     [SerializeField] private CardInfo _cardsInfo;
@@ -18,12 +19,13 @@ public class CardPack : MonoBehaviour
     [SerializeField] private string _selectText;
     [SerializeField] private string _deSelectText;
 
-    [SerializeField] private CardPack card;
+    //[SerializeField] private CardPack card;
 
     private void Start()
     {
-        if(gameObject.name == _cardsInfo.CurrentCardPackName)
+        if(index == PlayerPrefs.GetInt("CurrentCardIndex"))
         {
+            print(PlayerPrefs.GetInt("CurrentCardIndex"));
             IsSelected = true;
         }
 
@@ -35,10 +37,10 @@ public class CardPack : MonoBehaviour
 
     public void Select()
     {
-        _cardsInfo.GetCardPackByName().Deselect();
-        _cardsInfo.CurrentCardPackName = gameObject.name;
-        _cardsInfo.CurrentCardIndex = index;
+        _cardsInfo.GetCurrentCardPack(PlayerPrefs.GetInt("CurrentCardIndex")).Deselect();
+        PlayerPrefs.SetInt("CurrentCardIndex", index);   
         IsSelected = true;
+        DeselectAll();
         _buttonText.text = _selectText;
     }
 
@@ -46,6 +48,25 @@ public class CardPack : MonoBehaviour
     {
         IsSelected = false;
         _buttonText.text = _deSelectText;
+    }
+
+    private void DeselectAll()
+    {
+        Transform parent = transform.parent;
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            var child = parent.GetChild(i).gameObject.GetComponent<CardPack>();
+
+            if (child.IsBuy)
+            {   
+                if (child != this)
+                {
+                    print(parent.GetChild(i).gameObject.GetComponent<CardPack>().IsSelected);
+                    child.Deselect();
+                }
+            }
+        }
     }
 
     public void Buy()

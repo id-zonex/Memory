@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsSelected: 0
+  IsBuy: 1
   Cards:
   - {fileID: 1466851360581032221, guid: b4525ae554573454c85be15078ecdb50, type: 3}
   - {fileID: 6871102728488706368, guid: f2e18c3d174da1e43be0cffa1189e18e, type: 3}
@@ -238,6 +239,7 @@ MonoBehaviour:
   _buttonText: {fileID: 3903914331964116318}
   _selectText: Slected
   _deSelectText: Select
+  card: {fileID: 0}
 --- !u!1 &3903914331964116304
 GameObject:
   m_ObjectHideFlags: 0
