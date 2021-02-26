@@ -1,40 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SceneControler : MonoBehaviour
 {
-    [HideInInspector] public bool inProcces = false;
-
     [SerializeField] private List<GameObject> CardPrefabs = new List<GameObject>();
     [SerializeField] private CardInfo _cardInfo;
+
+    [SerializeField] private int xOffSet;
+    [SerializeField] private int yOffSet;
+    
+    private Camera _camera;
 
     private List<GameObject> _spawnedCards;
 
     private int xCardCount => PlayerPrefs.GetInt("xCardCount");
     private int yCardCount => PlayerPrefs.GetInt("yCardCount");
 
-    private int cardsCount { get { return xCardCount * yCardCount; } }
+    private int cardsCount => xCardCount * yCardCount;
 
-    public bool CanReveal { get { return _secondRevealed == null; } }
-
-    [SerializeField] private int xOffSet;
-    [SerializeField] private int yOffSet;
-
-    private Card _firstRevealed;
-    private Card _secondRevealed;
-
-    private int _store;
-    
-    private Camera camera;
 
     void Start()
     {
+        SpawnCards();
+    }
+
+    private void SpawnCards()
+    {
         CardPrefabs = _cardInfo.GetCurrentCardPack(PlayerPrefs.GetInt("CurrentCardIndex")).Cards;
 
-        camera = Camera.main;
+        _camera = Camera.main;
         _spawnedCards = RandomlyFillList(CardPrefabs);
-       
+
 
         float yOff = 0;
         float width = xCardCount * xOffSet;
@@ -64,17 +62,14 @@ public class SceneControler : MonoBehaviour
 
         }
 
-        camera.transform.position = new Vector3(Mathf.Floor(width / 2) + 2, Mathf.Floor(heigth / 2) + 2f);
+        _camera.transform.position = new Vector3(Mathf.Floor(width / 2) + 2, Mathf.Floor(heigth / 2) + 2f);
 
-        camera.orthographicSize = Mathf.Floor((width + heigth) / 2) * 0.4f;
-
+        _camera.orthographicSize = Mathf.Floor((width + heigth) / 2) * 0.4f;
     }
 
     private List<GameObject> RandomlyFillList(List<GameObject> cardPrefabs)
     {
         var cards = new List<GameObject>();
-        print(cards);
-        print(cardPrefabs);
 
         while(true)
         {
@@ -102,49 +97,6 @@ public class SceneControler : MonoBehaviour
         }
         
         return cards;
-    }
-
-    public void CardRevealed(Card card)
-    {
-        if (_firstRevealed == null)
-        {
-            _firstRevealed = card;
-        }
-        else
-        {
-            inProcces = true;
-            _secondRevealed = card;
-            CheckMatch();
-        }
-    }
-
-     private void CheckMatch()
-     {
-        if (_firstRevealed.CardID == _secondRevealed.CardID)
-        {
-            _store++;
-        }
-
-        else
-        {
-            Invoke("ReCard", 0.5f);
-        }
-
-        Invoke("NullCard", 0.6f);
-     }
-
-    public void ReCard()
-    {
-        _firstRevealed.Unreveal();
-        _secondRevealed.Unreveal();
-    }
-
-    public void NullCard()
-    {
-        _firstRevealed = null;
-        _secondRevealed = null;
-
-        inProcces = false;
     }
 
 }

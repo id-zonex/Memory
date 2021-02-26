@@ -58,9 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Card.cs" />
-    <Compile Include="Assets\Scripts\CardSpawner.cs" />
+    <Compile Include="Assets\Scripts\CardsControler.cs" />
     <Compile Include="Assets\Scripts\LoadGame.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\MenuControler.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\Score.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\Timer.cs" />
     <Compile Include="Assets\Scripts\SceneControler.cs" />
     <Compile Include="Assets\Scripts\Shop\CardInfo.cs" />
     <Compile Include="Assets\Scripts\Shop\CardPack.cs" />

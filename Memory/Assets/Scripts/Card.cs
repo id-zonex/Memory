@@ -7,12 +7,13 @@ public class Card : MonoBehaviour
     public int CardID;
     public GameObject main;
     public GameObject CardBeck;
-    SceneControler SceneControler;
+
+    [SerializeField] private CardsControler CardsControler;
 
     void Start()
     {
         main = GameObject.Find("SceneControler");
-        SceneControler = main.GetComponent<SceneControler>();
+        CardsControler = main.GetComponent<CardsControler>();
     }
 
 
@@ -20,10 +21,10 @@ public class Card : MonoBehaviour
     {
         if (CardBeck.activeSelf)
         {
-            if (SceneControler.inProcces) return;
+            if (CardsControler.inProcces) return;
 
             CardBeck.SetActive(false);
-            SceneControler.CardRevealed(this);
+            CardsControler.CardRevealed(this);
         }
     }
 
