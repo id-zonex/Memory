@@ -10,17 +10,22 @@ public class Timer : MonoBehaviour
 
     private Text _timerText;
 
-    void Start()
+    private void Start()
     {
         _timerText = GetComponent<Text>();
         _timerText.text = _startTime.ToString();
     }
 
-    void Update()
+    private void Update()
     {
-        if (_startTime <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (_startTime <= 0) TimeHasPassed();
 
         _startTime -= Time.deltaTime;
         _timerText.text = Mathf.Round(_startTime).ToString();
+    }
+
+    private void TimeHasPassed()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

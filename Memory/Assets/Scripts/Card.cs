@@ -8,16 +8,18 @@ public class Card : MonoBehaviour
     public GameObject main;
     public GameObject CardBeck;
 
+    public CardType type = CardType.NormalCard;
+
     [SerializeField] private CardsControler CardsControler;
 
-    void Start()
+    private void Start()
     {
         main = GameObject.Find("SceneControler");
         CardsControler = main.GetComponent<CardsControler>();
     }
 
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         if (CardBeck.activeSelf)
         {
@@ -28,8 +30,19 @@ public class Card : MonoBehaviour
         }
     }
 
+    public enum CardType
+    {
+        NormalCard,
+        CoinCard,
+    }
+
     public void Unreveal()
     {
-        CardBeck.SetActive(true);
+        if (CardBeck != null) CardBeck.SetActive(true);
+    }
+
+    public void UpCoin()
+    {
+
     }
 }

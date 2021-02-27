@@ -5,12 +5,14 @@ using UnityEngine.Events;
 
 public class SceneControler : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> CardPrefabs = new List<GameObject>();
+    [SerializeField] private List<GameObject> _cardPrefabs = new List<GameObject>();
     [SerializeField] private CardInfo _cardInfo;
 
     [SerializeField] private int xOffSet;
     [SerializeField] private int yOffSet;
-    
+
+    public int cardsCount => xCardCount * yCardCount;
+
     private Camera _camera;
 
     private List<GameObject> _spawnedCards;
@@ -18,8 +20,7 @@ public class SceneControler : MonoBehaviour
     private int xCardCount => PlayerPrefs.GetInt("xCardCount");
     private int yCardCount => PlayerPrefs.GetInt("yCardCount");
 
-    private int cardsCount => xCardCount * yCardCount;
-
+    private CardPack _currentCardPack;
 
     void Start()
     {
@@ -28,10 +29,12 @@ public class SceneControler : MonoBehaviour
 
     private void SpawnCards()
     {
-        CardPrefabs = _cardInfo.GetCurrentCardPack(PlayerPrefs.GetInt("CurrentCardIndex")).Cards;
+        _currentCardPack = _cardInfo.GetCurrentCardPack(PlayerPrefs.GetInt("CurrentCardIndex"));
+
+        _cardPrefabs = _currentCardPack.Cards;
 
         _camera = Camera.main;
-        _spawnedCards = RandomlyFillList(CardPrefabs);
+        _spawnedCards = RandomlyFillList(_cardPrefabs);
 
 
         float yOff = 0;
@@ -73,11 +76,13 @@ public class SceneControler : MonoBehaviour
 
         while(true)
         {
-            if (cards.Count + 2 > cardsCount) break;
-            var randElement = cardPrefabs[Random.Range(0, cardPrefabs.Count)];
+            GameObject randElement = cardPrefabs[Random.Range(0, cardPrefabs.Count)];
 
-            cards.Add(randElement.gameObject);
-            cards.Add(randElement.gameObject);
+            if (cards.Count + 2 > cardsCount) break;
+            if (Random.Range(0, 100) > 85) randElement = _currentCardPack.Coin.gameObject;
+
+            cards.Add(randElement);
+            cards.Add(randElement);
         }
 
         cards = CardPlacer(cards);

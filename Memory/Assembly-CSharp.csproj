@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Card.cs" />
     <Compile Include="Assets\Scripts\CardsControler.cs" />
     <Compile Include="Assets\Scripts\LoadGame.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\Attempt.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\MenuControler.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\Score.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\Timer.cs" />

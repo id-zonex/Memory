@@ -7,7 +7,9 @@ public class CardPack : MonoBehaviour
 {
     public bool IsSelected;
     public bool IsBuy;
+
     public List<GameObject> Cards;
+    public Card Coin;
 
     public int index;
 
@@ -19,7 +21,6 @@ public class CardPack : MonoBehaviour
     [SerializeField] private string _selectText;
     [SerializeField] private string _deSelectText;
 
-    //[SerializeField] private CardPack card;
 
     private void Start()
     {

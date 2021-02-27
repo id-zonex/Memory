@@ -226,20 +226,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdaa6728b27c9c8449bdd41a92df8add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSelected: 0
+  IsSelected: 1
   IsBuy: 1
   Cards:
   - {fileID: 1466851360581032221, guid: b4525ae554573454c85be15078ecdb50, type: 3}
   - {fileID: 6871102728488706368, guid: f2e18c3d174da1e43be0cffa1189e18e, type: 3}
   - {fileID: 5529801651925991273, guid: df2c9d2ac988a474bb3766b1cfd015f4, type: 3}
   - {fileID: 3689757263671093703, guid: ec9449c33a080054e88c3a78a872315f, type: 3}
+  Coin: {fileID: 7469663345084090124, guid: 12cbf12b4057b9544b8742d7ffca147c, type: 3}
   index: 1
   _price: 0
   _cardsInfo: {fileID: 11400000, guid: b640029e4c3ec7940b37a23709190401, type: 2}
   _buttonText: {fileID: 3903914331964116318}
-  _selectText: Slected
+  _selectText: Selected
   _deSelectText: Select
-  card: {fileID: 0}
 --- !u!1 &3903914331964116304
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 
@@ -10,6 +8,7 @@ class CardsControler : MonoBehaviour
     [HideInInspector] public bool inProcces = false;
 
     [SerializeField] private UnityEvent AddScore;
+    [SerializeField] private UnityEvent MakeAttempt;
 
     public static int _score;
 
@@ -25,6 +24,7 @@ class CardsControler : MonoBehaviour
     {
         if (_firstRevealed == null)
         {
+            CheckCardType(card);
             _firstRevealed = card;
         }
         else
@@ -32,6 +32,7 @@ class CardsControler : MonoBehaviour
             inProcces = true;
             _secondRevealed = card;
             CheckMatch();
+            CheckCardType(card);
         }
     }
 
@@ -40,10 +41,10 @@ class CardsControler : MonoBehaviour
         if (_firstRevealed.CardID == _secondRevealed.CardID)
         {
             _score++;
-            AddScore.Invoke();
         }
         else
         {
+            MakeAttempt.Invoke();
             Invoke("ReCard", 0.5f);
         }
 
@@ -63,12 +64,13 @@ class CardsControler : MonoBehaviour
 
         inProcces = false;
     }
+
+    private void CheckCardType(Card card)
+    {
+        if (card.type == Card.CardType.CoinCard)
+        {
+            card.UpCoin();
+            Destroy(card.gameObject, 0.3f);
+        }
+    }
 }
-
-
-[SerializeField]
-class AddScoreEvent: UnityEvent
-{
-
-}
-

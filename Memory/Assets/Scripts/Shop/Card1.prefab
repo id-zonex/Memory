@@ -337,10 +337,10 @@ MonoBehaviour:
   - {fileID: 2421132852797761998, guid: 87114f8feb79e144989c73693b5f7ee6, type: 3}
   - {fileID: 5375879098596342603, guid: db1bca97267b77e4f8d89250f5d56665, type: 3}
   - {fileID: 1218965608573778169, guid: 548cace8e73b0244cafa5762e3f86c70, type: 3}
+  Coin: {fileID: 7262027158159641976, guid: 2615bc6b105b52845b4c7917e8ec4bfc, type: 3}
   index: 0
   _price: 0
   _cardsInfo: {fileID: 11400000, guid: b640029e4c3ec7940b37a23709190401, type: 2}
   _buttonText: {fileID: 3826220869686581325}
   _selectText: Selected
   _deSelectText: Select
-  card: {fileID: 0}
