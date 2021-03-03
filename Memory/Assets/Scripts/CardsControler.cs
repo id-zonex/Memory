@@ -31,8 +31,8 @@ class CardsControler : MonoBehaviour
         {
             inProcces = true;
             _secondRevealed = card;
-            CheckMatch();
             CheckCardType(card);
+            CheckMatch();
         }
     }
 

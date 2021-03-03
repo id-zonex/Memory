@@ -24,19 +24,43 @@ public class CardPack : MonoBehaviour
 
     private void Start()
     {
-        if(index == PlayerPrefs.GetInt("CurrentCardIndex"))
+        if (_cardsInfo.OpenCardsIndex.IndexOf(index) == index)
         {
-            print(PlayerPrefs.GetInt("CurrentCardIndex"));
-            IsSelected = true;
+            IsBuy = true;
         }
 
-        if (IsSelected)
+        if (IsBuy)
         {
-            Select();
+            if (index == PlayerPrefs.GetInt("CurrentCardIndex"))
+            {
+                print(PlayerPrefs.GetInt("CurrentCardIndex"));
+                IsSelected = true;
+            }
+
+            if (IsSelected)
+            {
+                Select();
+            }
+        }
+        else
+        {
+            _buttonText.text = $"Buy {_price}";
         }
     }
 
-    public void Select()
+    public void TryTake()
+    {
+        if(IsBuy)
+        {
+            Select();
+        }
+        else
+        {
+            Buy();
+        }
+    }
+
+    private void Select()
     {
         _cardsInfo.GetCurrentCardPack(PlayerPrefs.GetInt("CurrentCardIndex")).Deselect();
         PlayerPrefs.SetInt("CurrentCardIndex", index);   
@@ -70,8 +94,20 @@ public class CardPack : MonoBehaviour
         }
     }
 
-    public void Buy()
+    private void Buy()
     {
-        _cardsInfo.OpenCads.Add(this);
+        int coins = PlayerPrefs.GetInt("Coins");
+        Debug.Log($"coins{coins}");
+
+        if (!(coins - _price <= 0) && !(IsBuy))
+        {
+            coins -= _price;
+            _cardsInfo.OpenCardsIndex.Add(index);
+            IsBuy = true;
+            Select();
+        }
+
+        PlayerPrefs.SetInt("Coins", coins);
+        Debug.Log($"coins{coins}");
     }
 }

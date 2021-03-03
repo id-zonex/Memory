@@ -7,13 +7,14 @@ public class CardInfo : ScriptableObject
 {
     public CardPack DatafullCardPack;
 
-    public List<CardPack> OpenCads;
-    public List<CardPack> AllCards = new List<CardPack>();
+    public List<int> OpenCardsIndex;
+    public List<CardPack> OpenCards;
+    public List<CardPack> AllCards;
 
 
     public CardPack GetCurrentCardPack(int index)
     {
-        foreach (var i in OpenCads)
+        foreach (var i in OpenCards)
         {
             if (i.index == PlayerPrefs.GetInt("CurrentCardIndex"))
             {
@@ -28,8 +29,8 @@ public class CardInfo : ScriptableObject
     {
         PlayerPrefs.DeleteKey("CurrentCardIndex");
 
-        OpenCads.Clear();
-        OpenCads.Add(DatafullCardPack);
+        OpenCards.Clear();
+        OpenCards.Add(DatafullCardPack);
     }
 
 }

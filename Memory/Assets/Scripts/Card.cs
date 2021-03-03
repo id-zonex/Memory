@@ -43,6 +43,6 @@ public class Card : MonoBehaviour
 
     public void UpCoin()
     {
-
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
     }
 }
